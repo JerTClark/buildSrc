@@ -1,5 +1,5 @@
 # buildSrc
-*.iml
-.gradle
-build
-local.properties
+/*.iml
+/.gradle
+/build
+/local.properties
