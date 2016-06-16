@@ -7,7 +7,7 @@ class Today {
     private String today
 
     public Today() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yy")
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEMMMddyyyy-kkmm")
         Calendar calendar = Calendar.instance
         this.today = simpleDateFormat.format(calendar.getTime())
     }
