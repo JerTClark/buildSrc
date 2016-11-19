@@ -1,4 +1,4 @@
-package jer.buildsrc.announcement
+package announcement
 
 import org.gradle.api.Project
 

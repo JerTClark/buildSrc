@@ -11,11 +11,10 @@ class GitTask extends DefaultTask {
     /**
      * The path to the user's public key
      */
-    private String idPub = "-i /c/Users/Clark/.ssh/idFAM_rsa.pub",
-            status = "cmd /c git status",
+    private String status = "cmd /c git status",
             add = "cmd /c git add -A .",
             commit = "cmd /c git commit -m \"${commitMessage}\"",
-            push = "cmd /c git push ${idPub}"
+            push = "cmd /c git push"
 
     GitTask() {
         group = "pipeline"

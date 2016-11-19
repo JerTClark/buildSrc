@@ -7,7 +7,8 @@ import org.gradle.api.tasks.TaskAction
 class JenkinsBuildTrigger extends DefaultTask {
     @Input
     String apiToken
-    private String urlString
+    @Input
+    private String url
 
     JenkinsBuildTrigger() {
         group = "pipeline"
@@ -16,11 +17,12 @@ class JenkinsBuildTrigger extends DefaultTask {
 
     @TaskAction
     void start() {
-        urlString  = "http://10.34.177.109:9090/job/AndroidStrings/build?token=${this.apiToken}"
-        HttpURLConnection connection = null
+        /*i.e., http://10.34.177.109:9090/job/AndroidStrings/build?token=${this.apiToken}*/
+        def urlString  = "${this.url}${this.apiToken}"
+        HttpURLConnection connection
         try {
             URL url =
-                    new URL(urlString)
+                    new URL(url)
             connection = (HttpURLConnection) url.openConnection()
             connection.setRequestMethod("POST")
             connection.setUseCaches(false)
