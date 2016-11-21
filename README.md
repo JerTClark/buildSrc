@@ -1,2 +1,2 @@
 #buildSrc
-Very basic collection of sample buildSrc code.
+Very basic collection of buildSrc code.
