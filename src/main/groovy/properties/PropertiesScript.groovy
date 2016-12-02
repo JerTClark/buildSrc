@@ -17,13 +17,13 @@ class ProjectVersion {
     Integer minor
     Boolean release
 
-    ProjectVersion(Integer major, Integer minor) {
+    ProjectVersion(final Integer major, final Integer minor) {
         this.major = major
         this.minor = minor
         this.release = Boolean.FALSE
     }
 
-    ProjectVersion(Integer major, Integer minor, Boolean release) {
+    ProjectVersion(final Integer major, final Integer minor, final Boolean release) {
         this(major, minor)
         this.release = release
     }
@@ -42,7 +42,7 @@ class ReleaseVersionTask extends DefaultTask {
     @OutputFile File destFile
 
     ReleaseVersionTask() {
-        group = "versioning"
+        group = "snapper"
         description = "Makes project a release version"
     }
 
@@ -63,11 +63,11 @@ class ReleaseVersionListener implements TaskExecutionGraphListener {
     final static String releaseTaskPath = ":release"
 
     @Override
-    void graphPopulated(TaskExecutionGraph taskGraph) {
+    void graphPopulated(final TaskExecutionGraph taskGraph) {
         if(taskGraph.hasTask(releaseTaskPath)) {
-            List<Task> allTasks = taskGraph.allTasks
-            Task releaseTask = allTasks.find {it.path == releaseTaskPath}
-            Project project = releaseTask.project
+            final List<Task> allTasks = taskGraph.allTasks
+            final Task releaseTask = allTasks.find {it.path == releaseTaskPath}
+            final Project project = releaseTask.project
             if (!project.version.release) {
                 project.version.release = true
                 project.ant.propertyfile(file: project.versionFile) {

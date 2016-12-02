@@ -10,7 +10,7 @@ class AdbInstall extends DefaultTask {
     List<String> pathsToApkFiles = []
 
     AdbInstall() {
-        group = "adb"
+        group = "snapper"
         description = "Installs one or more provided apk files on a connected device via adb"
     }
 
@@ -18,7 +18,7 @@ class AdbInstall extends DefaultTask {
     void start() {
         pathsToApkFiles.each {
             println "Installing ${it}"
-            def output = "${AdbCommands.adbInstallCommand} ${it}".execute().text
+            final def output = "${AdbCommands.adbInstallCommand} ${it}".execute().text
             println output
         }
     }

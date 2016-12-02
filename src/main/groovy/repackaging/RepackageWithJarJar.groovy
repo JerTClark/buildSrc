@@ -16,22 +16,22 @@ class RepackageWithJarJar extends DefaultTask {
     boolean debugMode
 
     RepackageWithJarJar() {
-        group = 'build'
+        group = 'snapper'
         description = 'Repackage problematic dependencies with JarJarLinks'
     }
 
     @TaskAction
     void start() {
-        File dependencyJar
-        String zipGroupFileset
-        String input = project.configurations."${dependencyConfig}".asPath
+        final File dependencyJar
+        final String zipGroupFileset
+        final String input = project.configurations."${dependencyConfig}".asPath
         logger.info "input: ${input}"
-        String[] inputs = input.split(";")
+        final String[] inputs = input.split(";")
         if (inputs.size() == 1) {
             dependencyJar = new File(input)
             logger.info "dependencyJar: ${dependencyJar}"
         } else if (inputs.size() > 1) {
-            inputs.each {String jarFile ->
+            inputs.each { final String jarFile ->
                 project.copy {
                     from jarFile
                     into tempFolder
@@ -39,7 +39,7 @@ class RepackageWithJarJar extends DefaultTask {
             }
             zipGroupFileset = tempFolder
         }
-        String jarJarClasspath = project.configurations."${jarJarConfig}".asPath
+        final String jarJarClasspath = project.configurations."${jarJarConfig}".asPath
         project.ant {
             taskdef name: "jarjar", className: "com.tonicsystems.jarjar.JarJarTask",
                     classpath: "${new File(jarJarClasspath).absolutePath}"
@@ -63,7 +63,7 @@ class RepackageWithJarJar extends DefaultTask {
                     logger.info "tempFolder contents: ${new File(tempFolder).list()}"
                     zipgroupfileset(dir:tempFolder)
                 }
-                replacePatterns.eachWithIndex { String pattern, int i ->
+                replacePatterns.eachWithIndex { final String pattern, final int i ->
                     logger.info "Converting ${pattern} to ${resultPatterns[i]}"
                     rule pattern: pattern, result: resultPatterns[i]
                 }

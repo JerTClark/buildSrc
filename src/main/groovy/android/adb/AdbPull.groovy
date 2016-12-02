@@ -15,14 +15,14 @@ class AdbPull extends DefaultTask {
     String pullTo = ""
 
     AdbPull() {
-        group = "adb"
+        group = "snapper"
         description = "Executes an adb pull operation against a connected device"
     }
 
     @TaskAction
     void start() {
         println "Pulling ${pullFrom} from ${AdbCommands.getConnectedDeviceName()}"
-        def output = "${AdbCommands.adbPullCommand} ${pullFrom} ${pullTo}".execute().text
+        final def output = "${AdbCommands.adbPullCommand} ${pullFrom} ${pullTo}".execute().text
         println output
     }
 

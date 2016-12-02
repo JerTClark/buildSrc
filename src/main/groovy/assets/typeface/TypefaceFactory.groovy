@@ -30,6 +30,11 @@ class TypefaceFactory extends DefaultTask {
     @Input
     String defaultTypeface
 
+    TypefaceFactory() {
+        group = "snapper"
+        description = "Create a factory class of getters for the Android project's current font assets."
+    }
+
     @TaskAction
     void start() {
 

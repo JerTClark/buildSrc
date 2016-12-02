@@ -31,7 +31,7 @@ class SchemaGen extends DefaultTask {
     private final String command = "cmd /c schemagen"
 
     SchemaGen() {
-        group = "documentation"
+        group = "snapper"
         description = "Create an XML Schema document from a Java class"
     }
 

@@ -17,7 +17,7 @@ class GitTask extends DefaultTask {
             push = "cmd /c git push"
 
     GitTask() {
-        group = "pipeline"
+        group = "snapper"
         description = "Add all files and commit changes with the git command"
     }
 

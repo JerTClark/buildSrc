@@ -6,6 +6,11 @@ class IncrementArtifactoryBuildNumber extends DefaultTask {
     final def buildNumberKey = "buildInfo.build.number"
     final def propertiesFile = project.file("gradle.properties")
 
+    IncrementArtifactoryBuildNumber() {
+        group = "snapper"
+        description = "Increments the Artifactory Build-Info object's build number in the project's gradle.properties file"
+    }
+
     @TaskAction
     void start() {
         if (!this.propertiesFile.exists()) {

@@ -13,7 +13,7 @@ class AdbUninstallTask extends DefaultTask {
     List<String> packageNames = []
 
     AdbUninstallTask() {
-        group = "adb"
+        group = "snapper"
         description = "Uninstall package from connected device via adb"
     }
 
@@ -21,7 +21,7 @@ class AdbUninstallTask extends DefaultTask {
     void start() {
         packageNames.each {
             println "Uninstalling ${it} from ${AdbCommands.getConnectedDeviceName()}"
-            def output = "${AdbCommands.adbUninstallCommand} ${it}".execute().text
+            final def output = "${AdbCommands.adbUninstallCommand} ${it}".execute().text
             println output
         }
     }

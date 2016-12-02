@@ -15,14 +15,14 @@ class AdbPush extends DefaultTask {
     String pushTo = "/sdcard/"
 
     AdbPush() {
-        group = "adb"
+        group = "snapper"
         description = "Executes an adb push operation against a connected device"
     }
 
     @TaskAction
     void start() {
         println "Pushing ${pushFrom} to ${AdbCommands.getConnectedDeviceName()} ${pushTo}"
-        def output = "${AdbCommands.adbPullCommand} ${pushFrom} ${pushTo}".execute().text
+        final def output = "${AdbCommands.adbPullCommand} ${pushFrom} ${pushTo}".execute().text
         println output
     }
 }

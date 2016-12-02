@@ -23,7 +23,7 @@ class XsltTransform extends DefaultTask {
     File outputFile
 
     XsltTransform() {
-        group = "reporting"
+        group = "snapper"
         description = "Transform an Xml input file using an Xslt stylesheet input file."
         onlyIf {
             inputFile.exists()
@@ -33,7 +33,7 @@ class XsltTransform extends DefaultTask {
     @TaskAction
     void start() {
         project.ant.xslt(in: inputFile, style: xsltStyleFile, out: outputFile) {
-            params.each { key, value ->
+            params.each { final key, final value ->
                 ant.param(name: key, expression: value)
             }
         }

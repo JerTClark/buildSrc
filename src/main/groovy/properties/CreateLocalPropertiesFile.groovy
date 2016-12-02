@@ -16,7 +16,7 @@ class CreateLocalPropertiesFile extends DefaultTask {
 
     CreateLocalPropertiesFile() {
         group = "snapper"
-        description = "Create a properties file"
+        description = "Create a properties file from a provided map"
     }
 
     @TaskAction

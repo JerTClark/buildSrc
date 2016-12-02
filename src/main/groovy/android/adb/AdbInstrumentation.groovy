@@ -26,19 +26,19 @@ class AdbInstrumentation extends DefaultTask {
     String deviceCoverageFile
 
     AdbInstrumentation() {
-        group = "adb"
+        group = "snapper"
         description = "Run Android instrumentation tests on connected device via adb"
     }
 
     @TaskAction
     void start() {
-        String useCoverage = "-w -e coverage true -e coverageFile ${deviceCoverageFile}"
-        String packageTestRunner = "${testPackageName}/${testInstrumentationRunner}"
+        final String useCoverage = "-w -e coverage true -e coverageFile ${deviceCoverageFile}"
+        final String packageTestRunner = "${testPackageName}/${testInstrumentationRunner}"
         println "Running Android instrumentation tests on ${AdbCommands.getConnectedDeviceName()}"
-        def command = withCoverage ?
+        final def command = withCoverage ?
                 "${AdbCommands.adbInstrumentationCommand} ${useCoverage} ${packageTestRunner}" :
                 "${AdbCommands.adbInstrumentationCommand} ${packageTestRunner}"
-        Scanner scanner = new Scanner(command.execute().inputStream)
+        final Scanner scanner = new Scanner(command.execute().inputStream)
         def line
         while(scanner.hasNext()) {
             line = scanner.nextLine()

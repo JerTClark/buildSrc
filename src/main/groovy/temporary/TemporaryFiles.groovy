@@ -4,14 +4,14 @@ import org.gradle.api.Project
 
 class TemporaryFiles {
 
-    static void tryToDelete(Project project, String startsWith = null, String endsWith = null) {
-        def filter
+    static void tryToDelete(final Project project, final String startsWith = null, final String endsWith = null) {
+        final def filter
         if (startsWith && endsWith)
-            filter = {File dir, String name ->
+            filter = { final File dir, final String name ->
                 name.startsWith(startsWith) || name.endsWith(endsWith)}
         else if (startsWith && !endsWith)
-            filter = {File dir, String name -> name.startsWith(startsWith)}
-        else filter = {File dir, String name -> name.endsWith(endsWith)}
+            filter = { final File dir, final String name -> name.startsWith(startsWith)}
+        else filter = { final File dir, final String name -> name.endsWith(endsWith)}
 
         project.file(System.getenv("Temp"))
                 .listFiles(filter as FilenameFilter).each {

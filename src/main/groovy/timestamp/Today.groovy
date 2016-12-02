@@ -8,10 +8,10 @@ class Today {
     private String noClock
 
     public Today() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEMMMddyyyy-kkmm")
-        SimpleDateFormat simpleDateFormatNoClock = new SimpleDateFormat("EEEMMMddyyyy")
-        Calendar calendar = Calendar.instance
-        Date date = calendar.getTime()
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEMMMddyyyy-kkmm")
+        final SimpleDateFormat simpleDateFormatNoClock = new SimpleDateFormat("EEEMMMddyyyy")
+        final Calendar calendar = Calendar.instance
+        final Date date = calendar.getTime()
         this.today = simpleDateFormat.format(date)
         this.noClock = simpleDateFormatNoClock.format(date)
     }
@@ -25,7 +25,7 @@ class Today {
         this.noClock
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         println new Today()
         println new Today().noClock
     }

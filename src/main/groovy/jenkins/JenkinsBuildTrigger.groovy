@@ -11,23 +11,23 @@ class JenkinsBuildTrigger extends DefaultTask {
     private String url
 
     JenkinsBuildTrigger() {
-        group = "pipeline"
-        description = "Trigger a Jenkins build"
+        group = "snapper"
+        description = "Trigger a Jenkins build on the Jenkins instance"
     }
 
     @TaskAction
     void start() {
         /*i.e., http://10.34.177.109:9090/job/AndroidStrings/build?token=${this.apiToken}*/
-        def urlString  = "${this.url}${this.apiToken}"
-        HttpURLConnection connection
+        final def urlString  = "${this.url}${this.apiToken}"
+        final HttpURLConnection connection
         try {
-            URL url =
+            final URL url =
                     new URL(url)
             connection = (HttpURLConnection) url.openConnection()
             connection.setRequestMethod("POST")
             connection.setUseCaches(false)
             connection.setDoOutput(true)
-            int code = connection.getResponseCode()
+            final int code = connection.getResponseCode()
             println "Connection to ${url.toString()}"
             switch (code) {
                 case 201:
@@ -40,7 +40,7 @@ class JenkinsBuildTrigger extends DefaultTask {
                     project.logger.info(code + " unknown code")
                     break;
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             logger.info(e.getMessage());
         }
     }
