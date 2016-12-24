@@ -30,7 +30,7 @@ class Css2SassTest extends Specification {
         this.cssFile.exists()
         this.sassFile.exists()
         this.cssFile.text != this.sassFile.text
-        this.sassFile.text == "html \n  color: black\n  display: inline-block\n"
+        this.sassFile.text == "html \r\n  color: black\r\n  display: inline-block\r\n"
     }
 
     def cleanup() {
