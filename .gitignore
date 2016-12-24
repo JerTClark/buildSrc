@@ -18,7 +18,3 @@
 ## Windows
 **/desktop.ini
 **/Thumbs.db
-
-# Individually tracked
-buildSrc
-gradleScripts
