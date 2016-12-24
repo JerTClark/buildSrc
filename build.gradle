@@ -1,5 +1,14 @@
+import java.nio.file.Files
+
+group = "org.snapper.buildsrc"
+description = "A buildSrc containing commonly used Gradle code shared across projects"
+version = "0.1.0"
+
 apply plugin: 'groovy'
-apply plugin: 'announce'
+
+ext {
+    spockVersion = GroovySystem.version.replaceAll(/\.\d+$/, "")
+}
 
 repositories {
     mavenCentral()
@@ -8,12 +17,8 @@ repositories {
 dependencies {
     compile localGroovy()
     compile gradleApi()
-    compile 'org.codehaus.groovy:groovy:2.4.7'
-    compile 'com.googlecode.jarjar:jarjar:1.3'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.spockframework:spock-core:1.0-groovy-2.3'
-}
 
-build.doLast {
-    announce.announce "${project.name} built successfully", 'local'
+    testCompile("org.spockframework:spock-core:1.1-groovy-${spockVersion}-rc-3") {
+        exclude module: "groovy-all"
+    }
 }

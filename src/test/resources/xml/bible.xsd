@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    jaxb:extensionBindingPrefixes="xjc"
+    jaxb:version="2.1">
+
+    <xsd:annotation>
+        <xsd:documentation>This is the schema used to define and validate Xml documents based on Bible references</xsd:documentation>
+        <xsd:appinfo>A schema providing a suggestion of structure to use for Bible references.
+            <jaxb:globalBindings
+                collectionType="java.util.ArrayList"
+                generateIsSetMethod="true">
+                <xjc:simple/>
+            </jaxb:globalBindings>
+            <jaxb:schemaBindings>
+                <jaxb:package name="org.steps.freedom.util.schema.bible">
+                    <jaxb:javadoc><![CDATA[<body>Java content classes generated from the bible.xsd schema.</body>]]></jaxb:javadoc>
+                </jaxb:package>
+            </jaxb:schemaBindings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <!--The root element-->
+    <xsd:element name="bible">
+        <xsd:complexType>
+            <xsd:choice minOccurs="1" maxOccurs="unbounded">
+                <xsd:element ref="book"/>
+            </xsd:choice>
+            <xsd:attribute name="version" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--A book of the Bible that is a part of this reference-->
+    <xsd:element name="book">
+        <xsd:complexType>
+            <xsd:choice minOccurs="1" maxOccurs="unbounded">
+                <xsd:element ref="chapter"/>
+            </xsd:choice>
+            <xsd:attribute name="title" use="required"/>
+            <xsd:attribute name="number" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--A chapter of the book of the Bible that is a part of this reference-->
+    <xsd:element name="chapter">
+        <xsd:complexType>
+            <xsd:choice minOccurs="1" maxOccurs="unbounded">
+                <xsd:element ref="verse"/>
+            </xsd:choice>
+            <xsd:attribute name="number" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--A verse in the chapter of the book of the Bible that is a part of this reference-->
+    <xsd:element name="verse">
+        <xsd:complexType mixed="true">
+            <xsd:choice maxOccurs="unbounded">
+                <xsd:element name="emphasis"/>
+            </xsd:choice>
+            <xsd:attribute name="number" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--An emphasis is added to the contained text-->
+    <xsd:element name="emphasis">
+        <xsd:simpleType>
+            <xsd:restriction base="xsd:string"/>
+        </xsd:simpleType>
+    </xsd:element>
+
+</xsd:schema>

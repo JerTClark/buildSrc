@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--A demonstration of how styles can be applied to this application-->
+    <style name="DarkTheme" parent="AppTheme">
+
+        <item name="android:actionMenuTextColor">@color/breakerPurpleLight</item>
+        <item name="actionMenuTextColor">@color/breakerPurpleLight</item>
+        <item name="android:actionOverflowButtonStyle">@style/BreakerActionOverflowButton</item>
+        <item name="android:colorAccent" tools:ignore="NewApi">?appStatusBarColor</item>
+        <item name="colorAccent" tools:ignore="NewApi">?appStatusBarColor</item>
+        <item name="android:colorPrimary" tools:ignore="NewApi">?appColorPrimary</item>
+        <item name="android:colorControlActivated" tools:ignore="NewApi">?colorPrimaryWhite</item>
+        <item name="colorControlActivated" tools:ignore="NewApi">?appStatusBarColor</item>
+        <item name="android:colorControlNormal" tools:ignore="NewApi">?colorPrimaryWhite</item>
+        <item name="colorControlNormal" tools:ignore="NewApi">?colorPrimaryWhite</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back_arrow_dark</item>
+        <item name="homeAsUpIndicator">@drawable/ic_back_arrow_dark</item>
+        <item name="android:itemTextAppearance">@style/BreakerItemTextAppearance</item>
+        <item name="android:popupMenuStyle">@style/BreakerPopupMenuStyle</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/BreakerPopupMenuStyle.TextAppearanceLarge</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/BreakerPopupMenuStyle.TextAppearanceSmall</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">?appStatusBarColor</item>
+        <item name="android:textColorPrimaryInverse">?appTextColorPrimaryInverse</item>
+        <item name="android:textColorSecondary">@color/breakerPurpleLight</item>
+        <item name="android:windowBackground">?backgroundColorPrimary</item>
+        <item name="drawerArrowStyle">@style/BreakerDrawerToggle</item>
+
+        <item name="appBarHomeIcon">@mipmap/ic_launcher_chain_purple</item>
+        <item name="appBarBackgroundColor">@color/breakerPurple</item>
+        <item name="appBarTitleTextColor">?colorPrimaryWhite</item>
+        <item name="appBarSubtitleTextColor">?colorPrimaryWhite</item>
+
+        <item name="appColorPrimary">@color/breakerPurple</item>
+        <item name="appColorSecondary">@color/breakerPurpleLight</item><!--This color will be used for menu text headers, including the navigation drawer, and settings descriptions-->
+
+        <item name="appStatusBarColor">@color/breakerPurpleDark</item><!--Applies to the status bar in API 21+-->
+
+        <item name="appTextColorPrimary">?colorPrimaryWhite</item>
+        <item name="appTextColorPrimaryInverse">?colorPrimaryGrey</item>
+        <item name="appTextColorSecondary">?colorPrimaryWhite</item>
+        <item name="appPlaintextColor">?colorPrimaryGrey</item>
+
+        <!--The text color for alternate list items-->
+        <item name="appListItemAlternateTextColor">?colorPrimaryWhite</item>
+
+        <!--The "dark" theme utilizes the primary blacks for its main background color-->
+        <item name="backgroundColorPrimary">?colorPrimaryBlack</item>
+        <item name="backgroundColorSecondary">?colorSecondaryBlack</item>
+
+        <!--A background to apply to alternate list items-->
+        <item name="backgroundListItemAlternate">?backgroundColorSecondary</item>
+
+        <item name="buttonStateful">@drawable/button_breaker</item>
+
+        <item name="colorPale">@color/breakerPurple</item>
+
+        <!--Custom toast colors-->
+        <item name="customToastBackgroundColor">?colorPrimaryWhite</item>
+        <item name="customToastBorderColor">@color/breakerBlue</item>
+        <item name="customToastTitleTextColor">@color/breakerPurpleLight</item>
+        <item name="customToastMessageTextColor">?colorPrimaryBlack</item>
+        <item name="customToastBackgroundResource">@drawable/app_background_toast_breaker</item>
+
+        <item name="editTextCursorColor">?appColorSecondary</item>
+
+        <item name="iconApp">@mipmap/ic_launcher_chain_purple</item>
+        <item name="iconBackArrow">@drawable/ic_back_arrow_dark</item>
+        <item name="iconChain">@drawable/ic_chain_dark</item>
+        <item name="iconMenuMoreOverflow">@drawable/ic_menu_moreoverflow_breaker</item>
+        <item name="iconSettings">@drawable/ic_settings_dark</item>
+        <item name="iconSteps">@drawable/ic_steps_dark</item>
+        <item name="iconStepsThemed">@drawable/ic_steps_breakertheme</item>
+
+        <item name="popupMenuBackgroundColor">?backgroundColorPrimary</item>
+        <item name="popupMenuLargeTextColor">?colorPrimaryWhite</item>
+        <item name="popupMenuSmallTextColor">?colorPrimaryWhite</item>
+
+        <item name="navigationViewTextColor">?colorPrimaryWhite</item>
+    </style>
+
+    <!--This style is applied to the drawerArrowStyle (navigation drawer toggle)-->
+    <style name="BreakerDrawerToggle" parent="Base.Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <!--This must be a stateful color resource-->
+        <item name="color">?appBarSubtitleTextColor</item>
+        <item name="barLength">20dp</item>
+        <item name="gapBetweenBars">4dp</item>
+        <item name="drawableSize">26dp</item>
+        <item name="thickness">2dp</item>
+        <item name="arrowShaftLength">16dp</item>
+        <item name="arrowHeadLength">8dp</item>
+    </style>
+
+    <!--Applies to menus (like the overflow menu)-->
+    <style name="BreakerItemTextAppearance">
+        <item name="android:textColor">@color/breakerPurpleLight</item>
+    </style>
+
+    <!--This style is applied to the application's base theme's "android:popupMenuStyle"-->
+    <style name="BreakerPopupMenuStyle" parent="Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">?popupMenuBackgroundColor</item>
+    </style>
+    <style name="BreakerPopupMenuStyle.TextAppearanceLarge" parent="Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">
+        <item name="android:textColor">?popupMenuLargeTextColor</item>
+    </style>
+    <style name="BreakerPopupMenuStyle.TextAppearanceSmall" parent="Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+        <item name="android:textColor">?popupMenuSmallTextColor</item>
+    </style>
+
+    <style name="BreakerActionOverflowButton" parent="Widget.AppCompat.Light.ActionButton.Overflow">
+        <item name="android:src">?iconMenuMoreOverflow</item>
+    </style>
+
+</resources>
