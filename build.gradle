@@ -4,10 +4,6 @@ version = "0.1.0"
 
 apply plugin: 'groovy'
 
-ext {
-    spockVersion = GroovySystem.version.replaceAll(/\.\d+$/, "")
-}
-
 repositories {
     mavenCentral()
 }
