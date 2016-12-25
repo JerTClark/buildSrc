@@ -14,7 +14,7 @@ class DistributionTest extends Specification {
         this.project = ProjectBuilder.builder().build()
         String distFolder = this.getClass().classLoader.getResource("dist").file
         this.distribution = (Distribution) this.project.task("distribution", type: Distribution) {
-            distContents "${distFolder}/README.md", "${distFolder}/.gitignore"
+            distContents "${distFolder}/README.md", "${distFolder}/build.gradle"
             distName "demoDist"
             destinationDir "distribution"
         }
@@ -25,7 +25,7 @@ class DistributionTest extends Specification {
         expect:
         this.distribution.outputFile.exists()
         this.project.zipTree(this.distribution.outputFile).files.findAll {
-            it.name == "README.md" || it.name == ".gitignore"
+            it.name == "README.md" || it.name == "build.gradle"
         }.size() == 2
     }
 
