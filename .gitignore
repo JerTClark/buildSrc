@@ -6,6 +6,7 @@
 
 ## Gradle
 **/build
+**/classes
 **/.gradle
 **/gradle ## Remove "gradle" folder from .gitignore if the Gralde wrapper is used
 
