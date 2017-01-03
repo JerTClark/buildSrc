@@ -1,0 +1,145 @@
+@font-face {
+    font-family: "LinLibertine-Bold";
+    src: url("../css/LinLibertine-Bold.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-BoldItalic";
+    src: url("../css/LinLibertine-BoldItalic.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-Capitals";
+    src: url("../css/LinLibertine-Capitals.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-CapitalsBold";
+    src: url("../css/LinLibertine-CapitalsBold.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-CapitalsSlanted";
+    src: url("../css/LinLibertine-CapitalsSlanted.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-Display";
+    src: url("../css/LinLibertine-Display.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-Initials";
+    src: url("../css/LinLibertine-Initials.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-Italic";
+    src: url("../css/LinLibertine-Italic.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine-Slanted";
+    src: url("../css/LinLibertine-Slanted.ttf");
+}
+
+@font-face {
+    font-family: "LinLibertine";
+    src: url("../css/LinLibertine.ttf");
+}
+
+@font-face {
+    font-family: "LinuxLibertine-DisplayCapitals";
+    src: url("../css/LinuxLibertine-DisplayCapitals.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Black";
+    src: url("../css/Roboto-Black.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-BlackItalic";
+    src: url("../css/Roboto-BlackItalic.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url("../css/Roboto-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-BoldItalic";
+    src: url("../css/Roboto-BoldItalic.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Italic";
+    src: url("../css/Roboto-Italic.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("../css/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-LightItalic";
+    src: url("../css/Roboto-LightItalic.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url("../css/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-MediumItalic";
+    src: url("../css/Roboto-MediumItalic.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("../css/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Thin";
+    src: url("../css/Roboto-Thin.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-ThinItalic";
+    src: url("../css/Roboto-ThinItalic.ttf");
+}
+
+@font-face {
+    font-family: "RobotoCondensed-Bold";
+    src: url("../css/RobotoCondensed-Bold.ttf");
+}
+
+@font-face {
+    font-family: "RobotoCondensed-BoldItalic";
+    src: url("../css/RobotoCondensed-BoldItalic.ttf");
+}
+
+@font-face {
+    font-family: "RobotoCondensed-Italic";
+    src: url("../css/RobotoCondensed-Italic.ttf");
+}
+
+@font-face {
+    font-family: "RobotoCondensed-Light";
+    src: url("../css/RobotoCondensed-Light.ttf");
+}
+
+@font-face {
+    font-family: "RobotoCondensed-LightItalic";
+    src: url("../css/RobotoCondensed-LightItalic.ttf");
+}
+
+@font-face {
+    font-family: "RobotoCondensed-Regular";
+    src: url("../css/RobotoCondensed-Regular.ttf");
+}
+

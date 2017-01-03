@@ -35,7 +35,7 @@ class RepackageWithJarJarTest extends Specification {
             jarjarDemo "org.apache.httpcomponents:httpclient:4.5.1"
         }
         this.repackageWithJarJar = (RepackageWithJarJar) project.task("repackageWithJarJar", type: RepackageWithJarJar) {
-            debugMode true
+            debugMode false
             outputJar "repackageWithJarJarTest.jar"
             configurationForRepackaging "jarjarDemo"
             matchingPatterns "org.apache.**", "org.apache.http.**"
