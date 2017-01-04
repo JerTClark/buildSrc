@@ -65,14 +65,20 @@ class Fontface extends DefaultTask {
             this.fontfacesFile.createNewFile()
         }
 
-        ArrayList<String> fontFiles = []
-        listFilesWithRelativePaths(this.fontsDir, "", {fontFiles.add it})
+        Map<String, String> fontFiles = [:]
+        listFilesWithRelativePaths(this.fontsDir, "", {String relativeFile ->
+            if(relativeFile.contains("/")) {
+                fontFiles.put(relativeFile.substring(relativeFile.lastIndexOf("/") + 1), relativeFile)
+            } else {
+                fontFiles.put(relativeFile, relativeFile)
+            }
+        })
 
         this.fontfacesFile.withWriter { writer ->
-            fontFiles.each { String fontFile ->
+            fontFiles.each { Map.Entry<String, String> font ->
                 writer.append """@font-face {
-    font-family: "${fontFile - ".ttf"}";
-    src: url("${this.srcUrl.endsWith("/") ? this.srcUrl : this.srcUrl + "/"}${fontFile}");
+    font-family: "${font.key - ".ttf"}";
+    src: url("${this.srcUrl.endsWith("/") ? this.srcUrl : this.srcUrl + "/"}${font.value}");
 }
 
 """
