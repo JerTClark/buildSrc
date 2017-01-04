@@ -16,3 +16,7 @@ dependencies {
         exclude module: "groovy-all"
     }
 }
+
+task demo() {
+    process(project.file("fonts"))
+}

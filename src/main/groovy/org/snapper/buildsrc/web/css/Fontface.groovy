@@ -4,7 +4,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 
-import static org.snapper.buildsrc.file.ListFiles.listFiles
+import static org.snapper.buildsrc.file.ListFiles.listFilesWithRelativePaths
 
 /**
  * This class defines a type of task that can process a folder of font files
@@ -15,7 +15,9 @@ import static org.snapper.buildsrc.file.ListFiles.listFiles
  */
 class Fontface extends DefaultTask {
 
-    /**A file specifying a folder that contains font assets (such as .ttf files).*/
+    /**
+     * A file specifying a folder that contains font assets (such as .ttf files).
+     */
     File fontsDir
 
     /**The output file that will contain the generated '@fontface' blocks.*/
@@ -56,7 +58,6 @@ class Fontface extends DefaultTask {
 
     @TaskAction
     void start() {
-        def fontFiles = []
         this.srcUrl = this.srcUrl.replaceAll("\\\\", "/")
 
         if (this.fontfacesFile.exists()) {
@@ -64,15 +65,14 @@ class Fontface extends DefaultTask {
             this.fontfacesFile.createNewFile()
         }
 
-        this.fontsDir.listFiles().each {
-            fontFiles.addAll(listFiles(it))
-        }
+        ArrayList<String> fontFiles = []
+        listFilesWithRelativePaths(this.fontsDir, "", {fontFiles.add it})
 
         this.fontfacesFile.withWriter { writer ->
-            fontFiles.each { File fontFile ->
+            fontFiles.each { String fontFile ->
                 writer.append """@font-face {
-    font-family: "${fontFile.name - ".ttf"}";
-    src: url("${this.srcUrl.endsWith("/") ? this.srcUrl : this.srcUrl + "/"}${fontFile.name}");
+    font-family: "${fontFile - ".ttf"}";
+    src: url("${this.srcUrl.endsWith("/") ? this.srcUrl : this.srcUrl + "/"}${fontFile}");
 }
 
 """
