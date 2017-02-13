@@ -1,7 +1,9 @@
 package org.snapper.buildsrc.web.css
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.file.FileTree
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.TaskAction
 
 import static org.snapper.buildsrc.file.ListFiles.listFilesWithRelativePaths
@@ -16,9 +18,9 @@ import static org.snapper.buildsrc.file.ListFiles.listFilesWithRelativePaths
 class Fontface extends DefaultTask {
 
     /**
-     * A file specifying a folder that contains font assets (such as .ttf files).
+     * A file tree specifying a folder or folders that contains font assets (such as .ttf files).
      */
-    File fontsDir
+    FileTree fonts
 
     /**The output file that will contain the generated '@fontface' blocks.*/
     File fontfacesFile
@@ -33,11 +35,31 @@ class Fontface extends DefaultTask {
     }
 
     @Input
-    getFontsDir() { this.fontsDir }
+    getFonts() { this.fonts }
 
-    void setFontsDir(String fontDir) { this.fontsDir = project.file(fontDir) }
+    void setFonts(String fontDir) {
+        if (this.fonts != null) {
+            this.fonts += project.fileTree(dir: fontDir)
+        } else {
+            this.fonts = project.fileTree(dir: fontDir)
+        }
+    }
 
-    void setFontsDir(File fontDir) { this.fontsDir = fontDir }
+    void setFonts(File fontDir) {
+        if (this.fonts != null) {
+            this.fonts += project.fileTree(fontDir)
+        } else {
+            this.fonts = project.fileTree(fontDir)
+        }
+    }
+
+    void setFonts(FileTree fonts) {
+        this.fonts = fonts
+    }
+
+    void setFonts(Map map) {
+        this.fonts = project.fileTree(map)
+    }
 
     @Input
     getFontfacesFile() { this.fontfacesFile }
@@ -56,6 +78,7 @@ class Fontface extends DefaultTask {
 
     void setSrcUrl(String srcUrl) { this.srcUrl = srcUrl }
 
+
     @TaskAction
     void start() {
         this.srcUrl = this.srcUrl.replaceAll("\\\\", "/")
@@ -65,25 +88,19 @@ class Fontface extends DefaultTask {
             this.fontfacesFile.createNewFile()
         }
 
-        Map<String, String> fontFiles = [:]
-        listFilesWithRelativePaths(this.fontsDir, "", {String relativeFile ->
-            if(relativeFile.contains("/")) {
-                fontFiles.put(relativeFile.substring(relativeFile.lastIndexOf("/") + 1), relativeFile)
-            } else {
-                fontFiles.put(relativeFile, relativeFile)
-            }
-        })
-
         this.fontfacesFile.withWriter { writer ->
-            fontFiles.each { Map.Entry<String, String> font ->
-                writer.append """@font-face {
-    font-family: "${font.key - ".ttf"}";
-    src: url("${this.srcUrl.endsWith("/") ? this.srcUrl : this.srcUrl + "/"}${font.value}");
+            this.fonts.visit {
+                if (!it.isDirectory()) {
+                    writer.append """@font-face {
+    font-family: "${it.name}";
+    src: url("${this.srcUrl.endsWith("/") ? this.srcUrl : this.srcUrl + "/"}${it.relativePath}");
 }
 
 """
+                }
             }
         }
+
     }
 
 }

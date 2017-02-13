@@ -13,12 +13,12 @@ class FontfaceTest extends Specification {
     def setup() {
         Project project = ProjectBuilder.builder().build()
 
-        File fontsFolder = new File(this.getClass().classLoader.getResource("fonts").file)
+        def fontsFolder = new File(this.getClass().classLoader.getResource("fonts").file)
         String fontFile = "fontfaces.css"
         String srcUrlString = "../css"
 
         this.fontface = (Fontface) project.task("fontface", type: Fontface) {
-            fontsDir fontsFolder
+            fonts (dir: fontsFolder, excludes: ["DONTINCLUDEME.txt", "git**"])
             fontfacesFile fontFile
             srcUrl srcUrlString
         }
