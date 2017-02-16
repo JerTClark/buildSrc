@@ -92,7 +92,7 @@ class Fontface extends DefaultTask {
             this.fonts.visit {
                 if (!it.isDirectory()) {
                     writer.append """@font-face {
-    font-family: "${it.name}";
+    font-family: "${it.name.substring(0, it.name.lastIndexOf("."))}";
     src: url("${this.srcUrl.endsWith("/") ? this.srcUrl : this.srcUrl + "/"}${it.relativePath}");
 }
 

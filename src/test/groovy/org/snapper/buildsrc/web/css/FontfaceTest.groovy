@@ -9,11 +9,12 @@ class FontfaceTest extends Specification {
 
     @Shared
     Fontface fontface
+    Project project = ProjectBuilder.builder().build()
 
     def setup() {
-        Project project = ProjectBuilder.builder().build()
 
-        def fontsFolder = new File(this.getClass().classLoader.getResource("fonts").file)
+//        def fontsFolder = new File(this.getClass().classLoader.getResource("fonts").file)
+        def fontsFolder = project.file(project.projectDir.absolutePath + "\\src\\test\\resources\\fonts")
         String fontFile = "fontfaces.css"
         String srcUrlString = "../css"
 
@@ -30,4 +31,8 @@ class FontfaceTest extends Specification {
         this.fontface.fontfacesFile.exists()
     }
 
+    void cleanup() {
+        expect:
+        project.file("fontfaces.css").deleteOnExit()
+    }
 }
